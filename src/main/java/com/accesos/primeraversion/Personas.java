@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -16,13 +15,15 @@ import com.accesos.primeraversion.modelo.Sexo;
  * Clase general para cargar archivos de nombres y apellidos 
  * y generar aleatoriamente listas de personas.
  */
-public class GeneradorPersonas {
+public class Personas {
     private List<String> listaNombresHombres;
     private List<String> listaNombresMujeres;
     private List<String> listaApellidos;
     private Sexo[] sexos;
+    private List<Persona> personas;
+
     
-    public GeneradorPersonas() {
+    public Personas() {
         this.sexos = Sexo.values();
     }
 
@@ -138,16 +139,15 @@ public class GeneradorPersonas {
         return p;
     }
 
-    public List<Persona> generaPersonas(int numero) throws Exception{
-        List<Persona> lista = new ArrayList<>();
+    public void generaPersonas(int numero) throws Exception{
+        //List<Persona> lista = new ArrayList<>();
         if (this.listaApellidos==null || this.listaNombresHombres==null || this.listaNombresMujeres==null) {
             System.err.println("NO SE HAN PODIDO CARGAR LOS DATOS");
         }
         for (int i = 0; i < numero; i++) {
-            lista.add(getRandomPersona());
+            this.personas.add(getRandomPersona());
         }
         
-        return lista;
     }
 
 
@@ -157,7 +157,7 @@ public class GeneradorPersonas {
 
         Random random = new Random();
         random.nextLong(ending_date - starting_date);
-        LocalDate.parse(random);
+        //LocalDate.parse(random);
         return null;
     }
 }

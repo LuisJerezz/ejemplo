@@ -1,9 +1,12 @@
 package com.accesos.primeraversion.modelo;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Persona {
+    
     private String nombre;
     private String apellido;
     private String email;
@@ -11,6 +14,7 @@ public class Persona {
     private char letraDNI;
     private LocalDate fechaNacimiento;
     private Sexo sexo;
+    private List<Direccion> direcciones;
 
     public Persona() {
     }
@@ -23,6 +27,23 @@ public class Persona {
         this.letraDNI = letraDNI;
         this.fechaNacimiento = fechaNacimiento;
         this.sexo = sexo;
+        this.direcciones = new ArrayList<Direccion>();
+    }
+
+    public List<Direccion> getDirecciones() {
+        return this.direcciones;
+    }
+
+    public void setDirecciones(List<Direccion> direcciones){
+        this.direcciones = direcciones;
+    }
+
+    public void addDireccion(Direccion d){
+        this.direcciones.add(d);
+    }
+
+    public void delDireccion(Direccion d){
+        this.direcciones.removeIf(it -> it.equals(d));
     }
 
     public String getNombre() {

@@ -5,14 +5,14 @@ package com.accesos.primeraversion;
  */
 public class App {
     public static void main(String[] args) {
-        GeneradorPersonas gp = new GeneradorPersonas();
+        Personas gp = new Personas();
         gp.loadData(
             "datos\\nombres-mujer.txt",
             "datos\\nombres-hombre.txt",
             "datos\\apellidos.txt");
         
         try {
-            System.out.println(gp.generaPersonas(10).toString());
+            gp.generaPersonas(100);
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
